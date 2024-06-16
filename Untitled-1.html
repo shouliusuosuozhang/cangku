@@ -5,12 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>杭州电子科技大学</title>
     <style>
-        table{width: 100%;}
-        table ,td{
-            border: 1px solid rgb(232, 192, 192);
-        border-collapse: collapse;}
+       table {
+        width: 100%; 
+        border-collapse: collapse;
+        /* 移除大表格的边框 */
+        border: none;
+    }
+    td {
+        border: 1px solid rgb(232, 192, 192，0.5); /* 仅保留小表格的边框 */
+        /* 使大表格的单元格背景透明 */
+        background-color: transparent;
+    }
+
         tr{line-height: 50px;}
-   </style>
+
+        td table {
+            width: 100%; 
+            border-collapse: collapse;
+        }
+        td table td, td table th {
+            border: 1px solid rgb(232, 192, 192);
+        }
+
+        /* 专题和图片容器 */
+        .title-background {
+    background-color: #34c5db; /* 这里可以设置您想要的背景颜色 */
+    padding: 10px; /* 根据需要调整内边距 */
+    text-align: center; /* 文本居中 */
+    color: white; /* 文字颜色，以确保在背景色上可见 */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+        .topic-container {
+    display: flex;
+    align-items: center;
+}
+        .topic-container th {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .topic-container img {
+    width: 100px;
+    height: auto;
+    margin: 0 10px;
+    /* 移除margin，因为我们将在图片之间添加一个竖线元素 */
+}
+       专题-separator {
+            width: 1px;
+            height: 100%; /* 根据需要调整竖线高度 */
+            background-color: rgb(232, 192, 192);
+            margin: 0 20px; /* 调整竖线与图片之间的距离 */
+        }
+.topic-container:before {
+    content: '';
+    flex: 0 1 auto; /* 保持竖线的宽度 */
+    width: 1px;
+    background-color: rgb(232, 192, 192);
+    margin: 0 20px; /* 调整竖线与图片之间的距离 */
+}
+        /* 新增的CSS */
+        .flex-container {
+            display: flex;
+            justify-content: space-around; /* 使子元素在容器内均匀分布 */
+            align-items: center; /* 垂直居中 */
+        }
+        .flex-container img {
+            width: 100px; /* 统一图片宽度 */
+            height: auto; /* 自适应高度 */
+        }
+        .nav-links {
+            display: flex;
+            width: 100%;
+            justify-content: space-between; /* 使元素两端对齐 */
+        }
+        .nav-links th {
+            position: relative; /* 为伪元素定位 */
+            padding: 10px; /* 根据需要调整内边距 */
+            background: transparent; /* 透明背景 */
+            text-align: center; /* 文本居中 */
+        }
+        .nav-links th:not(:first-child):before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 20px; /* 竖线高度，可以根据字体大小调整 */
+            width: 1px; /* 竖线宽度 */
+            background-color: rgb(232, 192, 192); /* 竖线颜色 */
+            transform: translateY(-50%); /* 垂直居中 */
+        }
+        .nav-links th:not(:last-child):after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            height: 20px;
+            width: 1px;
+            background-color: rgb(232, 192, 192);
+            transform: translateY(-50%);
+        }
+        
+    </style>
    <script>
     function setNightMode() {
         var currentTime = new Date();
@@ -24,18 +119,17 @@
         }
     }
     setNightMode();
-</script>
+    </script>
 </head>
 <body>
 
 <table>
     <tr>
         <td colspan="5">
-            <div style="color: aqua;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> 
-                <h1>杭州电子科技大学</h1> 
+            <div class="title-background">
+                <h1>杭州电子科技大学</h1>
             </div>
         </td>
-
         <td colspan="4"></td>
     </tr>
 
@@ -54,15 +148,17 @@
     </tr>
 
     <tr>
-       <td></td>
-       <th>首页</th>
-       <th>学院概况</th>
-       <th>教学科研</th>
-       <th>学生天地</th>
-       <th>招生就业</th>
-       <th>作品赏析</th>
-       <th>联系我们</th>
-       <td></td>
+        <td colspan="9" class="flex-container"> <!-- 给导航链接的容器添加类名 -->
+            <div class="nav-links">
+                <th>首页</th>
+                <th>学院概况</th>
+                <th>教学科研</th>
+                <th>学生天地</th>
+                <th>招生就业</th>
+                <th>作品赏析</th>
+                <th>联系我们</th>
+            </div>
+        </td>
     </tr>
 
     <tr>
@@ -70,32 +166,50 @@
             <hr>
         </td>
     </tr>
+    <tr>
+        <!-- 图片部分 -->
+        <td colspan="3" class="topic-container">
+            <img src="111.jpg" alt="毕业展" style="width: 100%; max-width: 300px;">
+        </td>
+        <!-- 活动信息部分 -->
+        <td colspan="6">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="border: none;">
+                        <div>
+                            <h3>毕业设计展览</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: none;">
+                        <div>
+                            <h3>“典藏中国 智能出版”电子书创作设计营</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: none;">
+                        <div>
+                            <h3>XXX活动</h3>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td colspan="6" class="video-container six-cell-height">
+            <video controls>
+                <source src="2222.mp4" type="video/mp4">
+                您的浏览器不支持视频标签。
+            </video>
+            <div class="video-description">
+                <p>这里是视频简介的文字。可以添加关于视频的描述信息。</p>
+            </div>
+        </td>
+    </tr>
 
     <tr>
-        <th colspan="4" rowspan="3">
-           <img src="新建文件夹/111.jpg" alt="毕业展">            
-        </th>
-        <td colspan="2">
-           毕业设计展览
-        </td>
-        <td colspan="3" rowspan="3">
-          <video src="新建文件夹/2222.mp4"autoplay muted loop></video>
-          <p>视频简介，简介视频简介，简介视频简介，简介视频简介，简介</p>        
-        </td>
-    </tr>
-    <tr >
-        <td colspan="2">
-            “典藏中国 智能出版”电子书创作设计营
-            </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            XXX活动
-            </td>
-    </tr>
-
-    <tr>
-        <td colspan="6" rowspan="4">
+        <td colspan="6" >
             <table>
                 <tr>
                     <th colspan="2" rowspan="4">
@@ -118,16 +232,15 @@
                 </tr>
             </table> 
         </td> 
-        <td colspan="3" rowspan="4"> 日历表 </td>
+        <td colspan="3" > 日历表 </td>
     </tr>
 
-    <tr>
-        <th colspan="2">专题</th>
-        <td colspan="7">
-            <img src="新建文件夹/屏幕截图2024.05.21_14.45.20.png" width="100">
-            <img src="新建文件夹/屏幕截图2024.05.21_14.45.20.png" width="100">
-            <img src="新建文件夹/屏幕截图2024.05.21_14.45.20.png" width="100">
-        </td>
+    <tr class="topic-container">
+        <td>专题</td>
+        <td><div class="专题-separator"></div></td> <!-- 插入竖线 -->
+        <td><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片1"></td>
+        <td><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片2"></td>
+        <td><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片3"></td>
     </tr>
     <tr>
         <td colspan="9">
@@ -136,11 +249,9 @@
     </tr>
     <tr>
         <td colspan="9">
-            首页 学院概览 教学科研 学生天地 招生就业 作品赏析 联系我们
-            <br>
-            杭州电子科技大学 数字媒体与艺术设计学院版权所有. 
-            <br>
-            学院电话：0571-86878505 学院邮箱：xwcb@hdu.edu.c
+            首页 学院概览 教学科研 学生天地 招生就业 作品赏析 联系我们<br>
+            杭州电子科技大学 数字媒体与艺术设计学院版权所有.<br>
+            学院电话：0571-86878505 学院邮箱：xwcb@hdu.edu.cn
         </td>
     </tr>
 </table>
