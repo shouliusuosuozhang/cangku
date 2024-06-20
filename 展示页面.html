@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            /* 基础重置和全局样式 */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0 20px; /* 左右两侧留出50px的空间 */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+td, th {
+    border: 1px solid rgb(223, 231, 240);
+}
+tr {
+    line-height: 50px;
+}
+
+/* 特定组件样式 */
+.title-background, .page-header {
+    background-color: #95bee8;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* 调整包含学院名称的单元格高度，可以根据需要设置具体数值 */
+.h2-container {
+    height: 60px; /* 举例，你可以根据需要设置高度 */
+}
+
+/* 链接容器样式 */
+
+.links-container a {
+    padding: 5px; /* 链接内边距，减少行间距 */
+    text-decoration: none;
+    color: inherit; /* 链接颜色继承 */
+    margin: px 0; /* 链接之间的间距 */
+    background-color: #57b9eb; /* 每个链接的背景颜色，你可以自定义 */
+}
+
+.page-header {
+    height: 100vh;
+}
+
+.topic-container img {
+    width: 100%;
+    height: auto;
+}
+
+.img-container, .video-container {
+    width: 100%; /* 确保图片和视频容器宽度充满 */
+    vertical-align: middle;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+.nav-links-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.nav-links-table th {
+    width: calc(100% / 7);
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-links-table th:last-child {
+    border-right: none;
+}
+
+.nav-links-table th a {
+    text-decoration: none;
+    color: #1e69aa;
+}
+
+.nav-links-table th a:hover,
+.nav-links-table th a:focus {
+    color: #1db3ca; /* 链接悬停或聚焦时的颜色 */
+    background-color: #ffffff; /* 悬停时的背景颜色 */
+}
+tr.highlightable:hover td {
+   
+    color: #1db3ca;
+}
+td .highlightable:hover {
+    color: #1db3ca; /* 悬停时的文字颜色，与导航部分一致 */
+}
+tr.highlightable td {
+    /* 可选：为这些行的单元格添加一些初始状态的样式 */
+    transition: color 0.3s ease, color 0.3s ease;
+}
+a:hover, a:focus {
+    color: #1db3ca; /* 链接悬停或聚焦时的颜色 */
+    text-decoration: underline; /* 可以添加下划线以表示可点击 */
+}
+/* 导航链接间隔线已删除，因为不再需要 */
+td[colspan="3"] > div > p {
+    margin: 1px 0; /* 调整段落的外边距，减少垂直间距 */
+}
+/* 媒体查询 */
+@media (max-width: 768px) {
+    td, th {
+        padding: 5px;
+    }
+    .img-responsive {
+        width: auto;
+        height: 100%;
+    }
+}
+
+/* 页脚样式 */
+.footer-info {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8em;
+    color: rgb(134, 150, 166);
+}
+
+.merged-cell {
+    width: 100%; /* 确保单元格宽度充满 */
+    text-align: center; /* 文本居中 */
+    vertical-align: top; /* 垂直对齐到顶部 */
+}
+
+/* 内容容器 */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中 */
+    justify-content: center; /* 垂直居中 */
+    height: 100%; /* 占满单元格高度 */
+}
+
+/* 照片样式 */
+.centered-image {
+    width: 80%; /* 设置照片宽度 */
+    max-width: 600px; /* 最大宽度限制 */
+    height: auto; /* 高度自适应 */
+    margin: 20px 0; /* 边距 */
+}
+
+/* 文字样式 */
+.centered-text {
+    margin: 10px 0; /* 边距 */
+    text-align: center; /* 文字居中 */
+    font-size: 12px; /* 文字大小 */
+}
+
+/* 媒体查询，确保在不同屏幕尺寸上都能良好显示 */
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+    }
+    .centered-image {
+        width: 90%; /* 在小屏幕上增加照片宽度 */
+    }
+}
+    </style>
+   <script>
+    function setNightMode() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        if (hours >= 19 || hours < 6) {
+            document.body.style.backgroundColor = "black";
+            document.body.style.color = "white";
+        } else {
+            document.body.style.backgroundColor="";
+            document.body.style.color = "";
+        }
+    }
+    setNightMode();
+    </script>
+</head>
+<body>
+    <div class="centered-container">
+        <table>
+            <tr>
+                <td colspan="13">
+                    <div class="title-background">
+                        <h1>杭州电子科技大学</h1>
+                    </div>
+                </td>
+                
+            </tr>
+        
+            <tr>
+                <td colspan="10" class="h2-container">
+                    <div style="color: rgb(36, 145, 240);font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> 
+                        <h2>人文艺术与数字媒体学院</h2>
+                    </div>
+                </td>
+                
+                <td colspan="3" >
+                    <div style="text-align: center;">
+                        <!-- 将登录文本包裹在<a>标签中，并设置href属性 -->
+                        <p><a href="https://shouliusuosuozhang.github.io/cangku/登录页面.html" style="color: inherit; text-decoration: none;">登录</a></p>
+                        <p><a href="#" style="color: inherit; text-decoration: none;">学校邮箱</a></p>
+                        <p><a href="#" style="color: inherit; text-decoration: none;">作品投稿</a></p>
+                        <p><a href="#" style="color: inherit; text-decoration: none;">>English</a></p>
+                    </div>
+                </td>
+            </tr>
+        
+            <tr>
+                <td colspan="13" class="nav-table-cell">
+                    <table class="nav-links-table">
+                        <tr>
+                            <th><a href="https://shouliusuosuozhang.github.io/cangku/首页.html">首页</a></th>
+                            <th><a href="#">学院概况</a></th>
+                            <th><a href="#">教学科研</a></th>
+                            <th><a href="#">学生天地</a></th>
+                            <th><a href="#">招生就业</a></th>
+                            <th><a href="#">作品赏析</a></th>
+                            <th><a href="#">联系我们</a></th>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        <tr>
+            <td colspan="4" ><span class="highlightable">学院介绍</span></td>
+            <td colspan="9" rowspan="8" class="merged-cell">
+                <div class="content-container">
+                    <img src="照片.png" alt="相关描述" class="centered-image">
+                    <div class="centered-text">
+                        <p>基本信息</p>
+                        <p>李婷 Li Ting 副教授</p>
+                        <p>职务：融媒体与主题出版研究院副院长</p>
+                        <p>所属学院：人文艺术与数字媒体学院</p>
+                        <p>导师类型：硕士生导师</p>
+                        <p>专业及研究方向：编辑出版、文化产业、艺术传播</p>
+                        </div>
+                </div>   
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"><span class="highlightable">师资力量</span></td>
+        </tr>    
+        <tr>
+            <td ></td>
+            <td colspan="3"><span class="highlightable">院长介绍</span></td>
+        </tr>
+        <tr>
+            <td ></td>
+            <td colspan="3"><span class="highlightable">学院教授介绍</span></td>
+        </tr>
+        <tr>
+            <td ></td>
+            <td colspan="3"><span class="highlightable">学院副教授介绍</span></td>
+        </tr>
+        <tr>
+            <td ></td>
+            <td colspan="3"><span class="highlightable">学院讲师介绍</span></td>
+        </tr>
+        <tr>
+            <td colspan="4"><span class="highlightable">专业设置</span></td>
+        </tr>
+        <tr>
+            <td colspan="4"><span class="highlightable">课程设置</span></td>
+        </tr>
+
+
+            <tr class="topic-container">
+                <td colspan="1">专题</td>
+                <td colspan="3"><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片1"></td> <!-- 插入竖线 -->
+                <td colspan="3"><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片2"></td>
+                <td colspan="3"><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片3"></td>
+                <td colspan="3"><img src="屏幕截图2024.05.21_14.45.20.png" alt="专题图片4"></td>
+            </tr>
+            <tr>
+                <td colspan="13">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="13" class="footer-info">
+                    <p>首页 学院概览 教学科研 学生天地 招生就业 作品赏析 联系我们</p>
+                    <p>杭州电子科技大学 数字媒体与艺术设计学院版权所有.</p>
+                    <p>学院电话：0571-86878505 学院邮箱：xwcb@hdu.edu.cn</p>
+                </td>
+            </tr>
+        </table>
+        </div>
+         
+</body>
+</html>
